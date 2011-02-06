@@ -36,6 +36,8 @@ int __gaise_getaddrinfo(const char *node, const char *service,
       addrinfo_remove(AF_INET6, res);
     if(getenv("GAISE_REMOVE_IPV4"))
       addrinfo_remove(AF_INET, res);
+    if(*res == NULL)
+      rc = EAI_NODATA;
   }
   return rc;
 }
