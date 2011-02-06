@@ -2,3 +2,4 @@
 *.lo
 *.so
 noipv6
+noipv4

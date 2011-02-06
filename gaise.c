@@ -1,6 +1,7 @@
 #define _GNU_SOURCE
 #include <netdb.h>
 #include <dlfcn.h>
+#include <stdlib.h>
 
 #ifndef LIBC_GETADDRINFO
 # define LIBC_GETADDRINFO "getaddrinfo"
@@ -30,8 +31,12 @@ int __gaise_getaddrinfo(const char *node, const char *service,
   int rc;
   real_getaddrinfo = dlsym(RTLD_NEXT, LIBC_GETADDRINFO);
   rc = real_getaddrinfo(node, service, hints, res);
-  if(!rc)
-    addrinfo_remove(AF_INET6, res);
+  if(!rc) {
+    if(getenv("GAISE_REMOVE_IPV6"))
+      addrinfo_remove(AF_INET6, res);
+    if(getenv("GAISE_REMOVE_IPV4"))
+      addrinfo_remove(AF_INET, res);
+  }
   return rc;
 }
 

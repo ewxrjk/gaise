@@ -8,7 +8,7 @@ case "$1" in
   echo
   echo "Usage:"
   echo
-  echo "  noipv6 [--] COMMAND ARGS..."
+  echo "  noipv4 [--] COMMAND ARGS..."
   echo
   exit 0
   ;;
@@ -33,5 +33,5 @@ fi
 export __variable__
 DYLD_FORCE_FLAT_NAMESPACE=yes
 export DYLD_FORCE_FLAT_NAMESPACE
-export GAISE_REMOVE_IPV6=yes
+export GAISE_REMOVE_IPV4=yes
 exec "$@"
