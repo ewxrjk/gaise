@@ -1,0 +1,35 @@
+.TH noipv6 1
+.SH NAME
+noipv6 \- run a program with IPv6 address suppressed
+.SH SYNOPSIS
+.B noipv6
+.RB [ -- ]
+.I COMMAND
+.IR ARGS ...
+.SH DESCRIPTION
+.B noipv6
+runs a program with any IPv6 responses to
+.BR getaddrinfo (3)
+calls suppressed.
+The effect is that (subject to the caveats below) it will always IPv4
+connectivity instead of IPv6 connectivity.
+.SH OPTIONS
+.TP
+.B -h
+.TP
+.B --help
+Display usage message.
+.TP
+.B -V
+.TP
+.B --version
+Display version string.
+.SH LIMITATIONS
+.B noipv6
+only intercepts calls to
+.B getaddrinfo (3).
+Any program that uses other means of mapping hostnames to addresses
+will not be affected.
+.PP
+.B noipv6
+does not work on setuid or setgid programs.

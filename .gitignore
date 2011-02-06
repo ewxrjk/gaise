@@ -6,3 +6,4 @@ noipv4
 debian/files
 debian/gaise
 debian/substvars.*
+gaise-*.tar.gz

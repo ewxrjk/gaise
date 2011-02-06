@@ -42,6 +42,7 @@ pkg-gaise:
 	mkdir -p debian/gaise/usr/lib/gaise
 	mkdir -p debian/gaise/usr/share/man/man1
 	$(MAKE) install prefix=debian/gaise/usr mandir=debian/gaise/usr/share/man
+	gzip -9 debian/gaise/usr/share/man/man*/*
 	strip --strip-unneeded \
 		--remove-section=.comment \
 		debian/gaise/usr/lib/gaise/gaise.so

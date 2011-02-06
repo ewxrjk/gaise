@@ -56,8 +56,8 @@ install: installdirs
 	$(INSTALL) -m 755 noipv6 $(bindir)/noipv6
 	$(INSTALL) -m 755 noipv4 $(bindir)/noipv4
 	$(INSTALL) -m 644 ${MODULE} $(libdir)/gaise/${MODULE} 
-	#$(INSTALL) -m 644 noipv6.1 $(man1dir)/noipv6
-	#$(INSTALL) -m 644 noipv4.1 $(man1dir)/noipv4
+	$(INSTALL) -m 644 noipv6.1 $(man1dir)/noipv6.1
+	$(INSTALL) -m 644 noipv4.1 $(man1dir)/noipv4.1
 
 install-strip: install
 
