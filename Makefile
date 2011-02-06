@@ -63,6 +63,8 @@ clean:
 	rm -f noipv6
 	rm -f noipv4
 
+distclean: clean
+
 dist:
 	rm -rf gaise-${VERSION}
 	mkdir gaise-${VERSION}

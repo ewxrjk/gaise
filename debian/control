@@ -1,0 +1,14 @@
+Source: gaise
+Maintainer: Richard Kettlewell <richard+autoztool@sfere.greenend.org.uk>
+Priority: optional
+Standards-Version: 3.0.1.0
+Vcs-Git: http://www.greenend.org.uk/rjk/git/gaise
+
+Package: gaise
+Architecture: any
+Section: utils
+Depends: ${shlibs:Depends}
+Description: Suppress IPv6 addresses
+ Provides the noipv6 and noipv4 commands, which suppress IPv6 and IPv4
+ results (respectively) from getaddrinfo() calls.  This allows you
+ force program to use IPv4 even in full IPv6 environment.

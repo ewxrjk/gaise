@@ -1,0 +1,49 @@
+#! /usr/bin/make -f
+#
+
+INSTALL=install
+CHANGELOG=changelog
+
+build:
+	$(MAKE) prefix=/usr
+
+cleanpkg-gaise:
+	rm -rf debian/gaise
+
+pkg-gaise:
+	rm -rf debian/gaise
+	mkdir -p debian/gaise
+	mkdir -p debian/gaise/DEBIAN
+	mkdir -p debian/gaise/usr/share/doc/gaise
+	cp debian/copyright \
+		debian/gaise/usr/share/doc/gaise/copyright
+	cp debian/changelog \
+		debian/gaise/usr/share/doc/gaise/${CHANGELOG}
+	gzip -9 debian/gaise/usr/share/doc/gaise/${CHANGELOG}
+	mkdir -p debian/gaise/usr/bin
+	mkdir -p debian/gaise/usr/lib/gaise
+	mkdir -p debian/gaise/usr/share/man/man1
+	$(MAKE) install prefix=debian/gaise/usr mandir=debian/gaise/usr/share/man
+	strip --strip-unneeded \
+		--remove-section=.comment \
+		debian/gaise/usr/lib/gaise/gaise.so
+	dpkg-shlibdeps -Tdebian/substvars.gaise \
+		debian/gaise/usr/lib/gaise/*
+	dpkg-gencontrol -isp -pgaise -Pdebian/gaise -Tdebian/substvars.gaise
+	cd debian/gaise && \
+		find -name DEBIAN -prune -o -type f -print \
+			| sed 's/^\.\///' \
+			| xargs md5sum > DEBIAN/md5sums
+	chown -R root:root debian/gaise
+	chmod -R g-ws debian/gaise
+	dpkg --build debian/gaise ..
+
+
+binary: binary-arch binary-indep
+binary-arch:  pkg-gaise
+binary-indep: 
+
+clean:  cleanpkg-gaise
+	$(MAKE) distclean
+	rm -f debian/files
+	rm -f debian/substvars
