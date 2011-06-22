@@ -1,3 +1,9 @@
+gaise (0.2) unstable; urgency=low
+
+  * Typo fix in documentation.
+
+ -- Richard Kettlewell <rjk@greenend.org.uk>  Wed, 22 Jun 2011 19:34:33 +0100
+
 gaise (0.1) unstable; urgency=low
 
   * Initial Debianization

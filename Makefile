@@ -27,7 +27,7 @@ INSTALL=install -c
 
 include defs.$(shell uname -s)
 
-VERSION=0.1
+VERSION=0.2
 
 all: ${MODULE} noipv6 noipv4
 
