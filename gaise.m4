@@ -26,7 +26,7 @@ case "$1" in
   echo
   echo "Usage:"
   echo
-  echo "  noipv4 [--] COMMAND ARGS..."
+  echo "  __command__ [--] COMMAND ARGS..."
   echo
   exit 0
   ;;
@@ -43,13 +43,15 @@ case "$1" in
   ;;
 esac
 
+GAISE_PATH=${GAISE_PATH:-__pkglibdir__}
+
 if test "x$__variable__" = "x"; then
-  __variable__=pkglibdir/__module__
+  __variable__=${GAISE_PATH}/__module__
 else
-  __variable__="pkglibdir/__module__:$__VARIABLE__"
+  __variable__="${GAISE_PATH}/__module__:$__VARIABLE__"
 fi
 export __variable__
 DYLD_FORCE_FLAT_NAMESPACE=yes
 export DYLD_FORCE_FLAT_NAMESPACE
-export GAISE_REMOVE_IPV4=yes
+export GAISE_REMOVE_`'__suppress__=yes
 exec "$@"

@@ -43,6 +43,8 @@ case "$1" in
   ;;
 esac
 
+GAISE_PATH=${GAISE_PATH:-__pkglibdir__}
+
 if test "x$__variable__" = "x"; then
   __variable__=pkglibdir/__module__
 else

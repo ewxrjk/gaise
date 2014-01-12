@@ -29,28 +29,35 @@ include defs.$(shell uname -s)
 
 VERSION=0.2+
 
-all: ${MODULE} noipv6 noipv4
+all: ${MODULE} noipv6 noipv4 gaisetest
 
-noipv6: noipv6.m4 Makefile
-	m4 -Dpkglibdir="${pkglibdir}" \
+noipv6: gaise.m4 Makefile
+	m4 -D__pkglibdir__="${pkglibdir}" \
 		-DVERSION="${VERSION}" \
 		-D__module__=${MODULE} \
 		-D__variable__=${VARIABLE} \
-		noipv6.m4 > noipv6.tmp
-	mv noipv6.tmp noipv6
-	chmod 755 noipv6
+		-D__command__=noipv6 \
+		-D__suppress__=IPV6 \
+		$< > $@.tmp
+	mv $@.tmp $@
+	chmod 755 $@
 
-noipv4: noipv4.m4 Makefile
-	m4 -Dpkglibdir="${pkglibdir}" \
+noipv4: gaise.m4 Makefile
+	m4 -D__pkglibdir__="${pkglibdir}" \
 		-DVERSION="${VERSION}" \
 		-D__module__=${MODULE} \
 		-D__variable__=${VARIABLE} \
-		noipv4.m4 > noipv4.tmp
-	mv noipv4.tmp noipv4
-	chmod 755 noipv4
+		-D__command__=noipv4 \
+		-D__suppress__=IPV4 \
+		$< > $@.tmp
+	mv $@.tmp $@
+	chmod 755 $@
 
 $(MODULE): gaise.lo
 	$(CC) $(CFLAGS) $(SHAREFLAGS) -o $@ $^ $(LIBS)
+
+gaisetest: gaisetest.o
+	$(CC) $(CFLAGS) -o $@ $^ $(LIBS)
 
 install: installdirs
 	$(INSTALL) -m 755 noipv6 $(bindir)/noipv6
@@ -81,15 +88,27 @@ clean:
 	rm -f *.dylib
 	rm -f noipv6
 	rm -f noipv4
+	rm -f gaisetest
 
 distclean: clean
+
+check: check-0 check-4 check-6
+
+check-0: gaisetest
+	./gaisetest
+
+check-4: gaisetest noipv4 ${MODULE}
+	GAISE_PATH=. ./noipv4 ./gaisetest 4
+
+check-6: gaisetest noipv6 ${MODULE}
+	GAISE_PATH=. ./noipv6 ./gaisetest 6
 
 dist:
 	rm -rf gaise-${VERSION}
 	mkdir gaise-${VERSION}
 	cp COPYING Makefile README *.c gaise-${VERSION} 
-	cp noipv6.m4 noipv6.1 gaise-${VERSION} 
-	cp noipv4.m4 noipv4.1 gaise-${VERSION} 
+	cp gaise.m4 noipv6.1 gaise-${VERSION} 
+	cp noipv4.1 gaise-${VERSION} 
 	cp defs.Linux gaise-${VERSION}
 	mkdir gaise-${VERSION}/debian
 	cp debian/changelog gaise-${VERSION}/debian
