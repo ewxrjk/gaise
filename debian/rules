@@ -22,6 +22,13 @@
 INSTALL=install
 CHANGELOG=changelog
 
+CPPFLAGS:=$(shell dpkg-buildflags --get CPPFLAGS)
+CFLAGS:=$(shell dpkg-buildflags --get CFLAGS)
+CXXFLAGS:=$(shell dpkg-buildflags --get CXXFLAGS)
+LDFLAGS:=$(shell dpkg-buildflags --get LDFLAGS)
+
+export CFLAGS CPPFLAGS CXXFLAGS LDFLAGS
+
 build:
 	$(MAKE) prefix=/usr
 

@@ -54,10 +54,10 @@ noipv4: gaise.m4 Makefile
 	chmod 755 $@
 
 $(MODULE): gaise.lo
-	$(CC) $(CFLAGS) $(SHAREFLAGS) -o $@ $^ $(LIBS)
+	$(CC) $(CFLAGS) $(LDFLAGS) $(SHAREFLAGS) -o $@ $^ $(LIBS)
 
 gaisetest: gaisetest.o
-	$(CC) $(CFLAGS) -o $@ $^ $(LIBS)
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(LIBS)
 
 install: installdirs
 	$(INSTALL) -m 755 noipv6 $(bindir)/noipv6
