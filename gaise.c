@@ -1,6 +1,6 @@
 /*
  * This file is part of Gaise
- * Copyright © 2011 Richard Kettlewell
+ * Copyright © 2011, 2015 Richard Kettlewell
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -61,7 +61,7 @@ int __gaise_getaddrinfo(const char *node, const char *service,
   return rc;
 }
 
-#if __linux__
+#if __linux__ || __GNU__
 int getaddrinfo(const char *node, const char *service,
                 const struct addrinfo *hints,
                 struct addrinfo **res)
