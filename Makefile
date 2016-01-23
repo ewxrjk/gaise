@@ -63,7 +63,7 @@ gaisetest: gaisetest.o
 install: installdirs
 	$(INSTALL) -m 755 noipv6 $(bindir)/noipv6
 	$(INSTALL) -m 755 noipv4 $(bindir)/noipv4
-	$(INSTALL) -m 644 ${MODULE} $(pkglibdir)/${MODULE} 
+	$(INSTALL) -m 644 ${MODULE} $(pkglibdir)/${MODULE}
 	$(INSTALL) -m 644 noipv6.1 $(man1dir)/noipv6.1
 	$(INSTALL) -m 644 noipv4.1 $(man1dir)/noipv4.1
 
@@ -106,9 +106,9 @@ check-6: gaisetest noipv6 ${MODULE}
 dist:
 	rm -rf $(PACKAGE_NAME)-${PACKAGE_VERSION}
 	mkdir $(PACKAGE_NAME)-${PACKAGE_VERSION}
-	cp COPYING Makefile README *.c $(PACKAGE_NAME)-${PACKAGE_VERSION} 
-	cp $(PACKAGE_NAME).m4 noipv6.1 $(PACKAGE_NAME)-${PACKAGE_VERSION} 
-	cp noipv4.1 $(PACKAGE_NAME)-${PACKAGE_VERSION} 
+	cp COPYING Makefile README *.c $(PACKAGE_NAME)-${PACKAGE_VERSION}
+	cp $(PACKAGE_NAME).m4 noipv6.1 $(PACKAGE_NAME)-${PACKAGE_VERSION}
+	cp noipv4.1 $(PACKAGE_NAME)-${PACKAGE_VERSION}
 	cp defs.Linux $(PACKAGE_NAME)-${PACKAGE_VERSION}
 	cp defs.GNU $(PACKAGE_NAME)-${PACKAGE_VERSION}
 	mkdir $(PACKAGE_NAME)-${PACKAGE_VERSION}/debian
