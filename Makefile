@@ -34,7 +34,7 @@ all: ${MODULE} noipv6 noipv4 gaisetest
 
 noipv6: gaise.m4 Makefile
 	m4 -D__pkglibdir__="${pkglibdir}" \
-		-DPACKAGE_VERSION="${PACKAGE_VERSION}" \
+		-DVERSION="${PACKAGE_VERSION}" \
 		-D__module__=${MODULE} \
 		-D__variable__=${VARIABLE} \
 		-D__command__=noipv6 \
@@ -45,7 +45,7 @@ noipv6: gaise.m4 Makefile
 
 noipv4: gaise.m4 Makefile
 	m4 -D__pkglibdir__="${pkglibdir}" \
-		-DPACKAGE_VERSION="${PACKAGE_VERSION}" \
+		-DVERSION="${PACKAGE_VERSION}" \
 		-D__module__=${MODULE} \
 		-D__variable__=${VARIABLE} \
 		-D__command__=noipv4 \
