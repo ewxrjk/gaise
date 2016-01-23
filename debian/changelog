@@ -1,3 +1,11 @@
+gaise (0.3) unstable; urgency=medium
+
+  * GPL3
+  * Build .deb with proper hardening flags
+  * Improved usage message & documentation
+
+ -- Richard Kettlewell <rjk@greenend.org.uk>  Sat, 23 Jan 2016 13:41:11 +0000
+
 gaise (0.2) unstable; urgency=low
 
   * Typo fix in documentation.

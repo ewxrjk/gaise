@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 PACKAGE_NAME = gaise
-PACKAGE_VERSION = 0.2
+PACKAGE_VERSION = 0.3
 
 prefix=/usr/local
 bindir=${prefix}/bin
