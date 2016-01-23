@@ -110,6 +110,7 @@ dist:
 	cp $(PACKAGE_NAME).m4 noipv6.1 $(PACKAGE_NAME)-${PACKAGE_VERSION} 
 	cp noipv4.1 $(PACKAGE_NAME)-${PACKAGE_VERSION} 
 	cp defs.Linux $(PACKAGE_NAME)-${PACKAGE_VERSION}
+	cp defs.GNU $(PACKAGE_NAME)-${PACKAGE_VERSION}
 	mkdir $(PACKAGE_NAME)-${PACKAGE_VERSION}/debian
 	cp debian/changelog $(PACKAGE_NAME)-${PACKAGE_VERSION}/debian
 	cp debian/control debian/copyright $(PACKAGE_NAME)-${PACKAGE_VERSION}/debian
