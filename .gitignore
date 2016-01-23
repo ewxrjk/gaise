@@ -9,3 +9,4 @@ debian/substvars.*
 gaise-*.tar.gz
 *.o
 gaisetest
+products
