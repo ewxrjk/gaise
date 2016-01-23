@@ -22,11 +22,15 @@ set -e
 
 case "$1" in
 -h | --help )
-  echo "Gaise VERSION"
+  echo "__command__ VERSION - run a command with __suppress__ disabled"
   echo
   echo "Usage:"
-  echo
   echo "  __command__ [--] COMMAND ARGS..."
+  echo
+  echo "Options:"
+  echo "   --help, -h       Display usage message"
+  echo "   --version, -V    Display version number"
+  echo "   --               End of options"
   echo
   exit 0
   ;;
