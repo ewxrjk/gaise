@@ -126,7 +126,7 @@ distcheck: dist
 	rm -rf $(PACKAGE_NAME)-${PACKAGE_VERSION}
 
 %.lo : %.c
-	$(CC) $(CPPFLAGS) $(CFLAGS) -fpic -c $< -o $@
+	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
 echo-version:
 	@echo "$(PACKAGE_VERSION)"
