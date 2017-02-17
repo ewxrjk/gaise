@@ -83,6 +83,7 @@ installdirs:
 clean:
 	rm -f *.so
 	rm -f *.lo
+	rm -f *.o
 	rm -f *.dylib
 	rm -f noipv6
 	rm -f noipv4
