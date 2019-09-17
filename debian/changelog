@@ -1,3 +1,9 @@
+gaise (0.4) unstable; urgency=medium
+
+  * PIC, modernize approach to hardening.
+
+ -- Richard Kettlewell <rjk@terraraq.org.uk>  Sun, 05 Nov 2017 13:15:54 +0000
+
 gaise (0.3) unstable; urgency=medium
 
   * GPL3
